@@ -41,14 +41,6 @@ class Card extends JPanel {
         return heigth;
     }
 
-    public void setX(int x) {
-        Card.x = x;
-    }
-
-    public void setY(int y) {
-        Card.y = y;
-    }
-
     public int getId() {
         return id;
     }
