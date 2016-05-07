@@ -23,34 +23,19 @@ class GUI extends WindowAdapter{
     int rand,x,y;
     JLabel score=new JLabel("score");
     static JLabel err=new JLabel("errors");
-    Changes ch=new Changes(score,err,f);
+    Logic ch=new Logic(score,err,f);
     Vector<Integer> nope;
     static Card[] cards=new Card[3];
     String path[]={"src/memory/img1.jpg","src/memory/img2.jpg","src/memory/img3.jpg"};
     GUI(){
         f.addWindowListener(this);
-        try{
-            Clip clip;
-            File f=new File("/home/simone/Scaricati/audioclip-1461697928.wav");
-            AudioInputStream a=AudioSystem.getAudioInputStream(f);
-            clip=AudioSystem.getClip();
-            clip.open(a);
-            clip.start();
-
-        }catch(UnsupportedAudioFileException e){
-            e.printStackTrace();
-        }catch (IOException e) {
-            e.printStackTrace();
-        }catch (LineUnavailableException e){
-            e.printStackTrace();
-        }
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
         f.setResizable(false);
-        f.setBounds(200,0,1000,710);
+        f.setBounds(200,0,800,655);
         c.setLayout(null);
         x=0;
-        y=50;
+        y=20;
         for(int i=0;i<2;i++) {
             nope=new Vector<>();
             for (int j = 0; j <= 2; j++) {
@@ -60,13 +45,13 @@ class GUI extends WindowAdapter{
                 }
                 nope.addElement(rand);
                 cards[j] = new Card(path[rand],rand);
-                cards[j].setBounds(x += 100, y, cards[j].getWidth(), cards[j].getHeight());
+                cards[j].setBounds(x += 50, y, cards[j].getWidth(), cards[j].getHeight());
                 x += 200;
                 cards[j].addMouseListener(ch);
                 c.add(cards[j]);
             }
             x=0;
-            y=100+cards[0].getHeight();
+            y=50+cards[0].getHeight();
             f.add(c);
         }
         t = new Timer(750, new ActionListener(){
@@ -91,5 +76,6 @@ class GUI extends WindowAdapter{
         int a = JOptionPane.showConfirmDialog(null,"Vuoi uscire?","Exit",0);
         if(a==JOptionPane.YES_OPTION)
             System.exit(0);
+
     }
 }
