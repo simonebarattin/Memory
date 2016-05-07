@@ -7,14 +7,14 @@ import java.awt.event.MouseEvent;
 /**
  * Created by simone on 26/04/16.
  */
-class Changes extends MouseAdapter {
+class Logic extends MouseAdapter {
     Card c1,c2;
     static Card select;
     JLabel score,err;
     int er;
     JFrame f;
 
-    public Changes(JLabel score, JLabel err,JFrame f) {
+    public Logic(JLabel score, JLabel err, JFrame f) {
         this.err=err;
         this.score=score;
         this.f=f;
