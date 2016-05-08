@@ -27,6 +27,8 @@ class GUI extends WindowAdapter{
     Vector<Integer> nope;
     static Card[] cards=new Card[3];
     String path[]={"src/memory/img1.jpg","src/memory/img2.jpg","src/memory/img3.jpg"};
+    int i1[]={0,1,2,0,1,2};
+
     GUI(){
         f.addWindowListener(this);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,18 +39,20 @@ class GUI extends WindowAdapter{
         x=0;
         y=20;
         for(int i=0;i<2;i++) {
-            nope=new Vector<>();
             for (int j = 0; j <= 2; j++) {
-                rand = (int) (Math.random() * 3);
-                while (nope.contains(rand)){
-                    rand = (int) (Math.random() * 3);
+                rand = (int) (Math.random() * 6);
+                System.out.print(rand);
+                System.out.println(i1[rand]);
+                while (i1[rand]==-1){
+                    rand = (int) (Math.random() * 6);
+                    System.out.println(rand);
                 }
-                nope.addElement(rand);
-                cards[j] = new Card(path[rand],rand);
+                cards[j] = new Card(path[i1[rand]],i1[rand]);
                 cards[j].setBounds(x += 50, y, cards[j].getWidth(), cards[j].getHeight());
                 x += 200;
                 cards[j].addMouseListener(ch);
                 c.add(cards[j]);
+                i1[rand]=-1;
             }
             x=0;
             y=50+cards[0].getHeight();
